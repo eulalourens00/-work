@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        
         //1.
         static double[] function()
         {

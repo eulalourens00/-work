@@ -1,5 +1,6 @@
 ﻿namespace ПР_8_10._02._2025_
 {
+
     internal class Program
     {
         //1.

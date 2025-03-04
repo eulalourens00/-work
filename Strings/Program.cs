@@ -90,34 +90,70 @@
 
             for (int i = 0; i < sentence.Length; i++)
             {
-                if (sentence[i] == sentence[i + 1]) { count++; }
-                else
-                {
-                    if (count > maxSym) { maxSym = count; }
-                    else { count = 0; }
-                }
-                
+                for (int j = 1; j < sentence.Length; j++) {
+                    if (sentence[i] == ' ') { continue; }
+                    else if (sentence[i] == sentence[j]) { count++; }
+                    else
+                    {
+                        if (count > maxSym) { maxSym = count; }
+                        else { count = 0; }
+                    }
+                }    
             }
             Console.WriteLine($"Max space between two words is {maxSym}");
         }
+        //7
+        static void DifferentSymb()
+        {
+            Console.Write("Enter a sentence: ");
+            string sentence = Console.ReadLine().ToLower();
+            int count = 0;
+            sentence = sentence.Trim().ToLower();
+
+            var set = new HashSet<int>();
+            foreach (var sym in sentence)
+            {
+                if (sym != ' ') { set.Add(sym); }
+            }
+            Console.WriteLine($"Count of different symbols = {set.Count}.");
+        }
+        //8
+        static void TwoSame()
+        {
+            Console.Write("Enter a sentence: ");
+            string sentence = Console.ReadLine().ToLower().Trim();
+
+            char? same = null;
+            for (int i = 0; i < sentence.Length; i++)
+            {
+                int count = 0;
+                for (int j = 0; j < sentence.Length; j++)
+                { if (sentence[i] == sentence[j]) { count++; } }
+                           
+                if (count == 2)
+                { same = sentence[i]; break;}
+            }
+
+            Console.WriteLine($"Two same symbols is - '{same}'");
+        }
         static void Main(string[] args)
         {
-            ////1.
-            //CountOfWords();
-            ////2.
-            //Reverse();
-            ////3.
-            //Vowel();
-            ////4.
-            //SubStrCount();
-            ////5.
-            //CountSpace();
-            ////6.
+            //1.
+            CountOfWords();
+            //2.
+            Reverse();
+            //3.
+            Vowel();
+            //4.
+            SubStrCount();
+            //5.
+            CountSpace();
+            //6.
             CountSymbols();
-            ////7.
-            
+            //7.
+            DifferentSymb();
             ////8.
-
+            TwoSame();
 
 
             //--------------------------------------------------------------------------

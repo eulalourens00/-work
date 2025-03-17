@@ -37,7 +37,7 @@
             ellipse.Area();
             ellipse.Perimeter();
 
-            Console.Clear();
+            //Console.Clear();
             //1.2
             CompositeShape compositeShape = new CompositeShape();
             Circle circle1 = new Circle(15);
@@ -47,7 +47,7 @@
             compositeShape.Area();
             compositeShape.Perimeter();
 
-            Console.Clear();
+            //Console.Clear();
 
             //2.
             DateTime birth = new DateTime(2007, 12, 27);

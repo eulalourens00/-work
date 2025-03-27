@@ -42,6 +42,18 @@
             //teacher.examEvent.Invoke("Overall rating 2!");
             //teacher.examEvent = null;
             //teacher.Exam("Test");
+
+
+            Account acc = new Account(200);
+            acc.notify += Print;
+            acc.Put(2000);
+            acc.Take(10000);
+
+        }
+
+        static void Print(string mess)
+        {
+            Console.WriteLine(mess);
         }
     }
 }

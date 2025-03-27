@@ -18,7 +18,7 @@
             Console.WriteLine();
 
             //2.
-            GuessNumber guessNumber = new GuessNumber(5, 2, 10);
+            GuessNumber guessNumber = new GuessNumber(47, 0, 100);
             guessNumber.TryGuess();
 
             //3.

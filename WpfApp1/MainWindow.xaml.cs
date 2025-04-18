@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.view;
 
 namespace WpfApp1
 {
@@ -17,11 +18,15 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window, ILoginButton
     {
+        private View _userViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
-
+            _userViewModel = new View();
+            DataContext = _userViewModel;
         }
+
         public void SignInButton_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailTextBox.Text;
@@ -41,13 +46,20 @@ namespace WpfApp1
                 MessageBox.Show("Invalid password.");
                 return;
             }
-            MessageBox.Show($"Email: {email}\nPassword: {password}");
+
+            _userViewModel.AddUser(new User(email, password));
+            MessageBox.Show($"User added. Total users: {_userViewModel.Users.Count}");
         }
 
         public void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             EmailTextBox.Text = string.Empty;
             PasswordTextBox.Clear();
+        }
+
+        private void PasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

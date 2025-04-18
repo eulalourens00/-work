@@ -15,8 +15,8 @@
         <Button Content="Sign in" HorizontalAlignment="Center" Margin="0,282,0,0" VerticalAlignment="Top" Height="38" Width="152" FontSize="20" FontFamily="Arial Black" Foreground="Black" Click="SignInButton_Click" Command=""/>        
         <Button Content="Clear" HorizontalAlignment="Center" Margin="0,325,0,0" VerticalAlignment="Top" Height="38" Width="152" FontSize="20" FontFamily="Arial Black" Foreground="Black" Click="ClearButton_Click"/>
         
-        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Center" Margin="0,151,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="310" Height="30"/>
-        <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Password" VerticalAlignment="Center" Width="310" Height="30"/>
+        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Center" Margin="0,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Height="30"/>
+        <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="310" Height="30" TextChanged="PasswordTextBox_TextChanged"/>
        
         <Rectangle HorizontalAlignment="Center" Height="2" Margin="0,264,0,0" Stroke="Black" VerticalAlignment="Top" Width="406"/>
 

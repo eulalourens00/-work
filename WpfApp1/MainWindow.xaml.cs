@@ -57,9 +57,18 @@ namespace WpfApp1
             PasswordTextBox.Clear();
         }
 
-        private void PasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void OpenNotesWindow_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                NotesWindow notesWindow = new NotesWindow();
+                notesWindow.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при открытии окна заметок: {ex.Message}");
+            }
         }
     }
 }

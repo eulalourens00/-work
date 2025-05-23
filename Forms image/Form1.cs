@@ -88,10 +88,10 @@ namespace Forms_image
                 startPaint = false;
                 drawRectangle = false;
             }
-            if (drawSquare)
+            if (drawCircle)
             {
                 SolidBrush sb = new SolidBrush(button3.BackColor);
-                g.FillRectangle(sb, e.X, e.Y, int.Parse(textBox1.Text), int.Parse(textBox1.Text));
+                g.FillEllipse(sb, e.X, e.Y, int.Parse(textBox1.Text), int.Parse(textBox1.Text));
                 startPaint = false;
                 drawCircle = false;
             }

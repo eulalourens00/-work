@@ -8,7 +8,18 @@ namespace Forms_image
         {
             InitializeComponent();
 
+            g = panel4.CreateGraphics();
         }
+
+        bool startPaint;
+        Graphics g;
+        int? initX;
+        int? initY;
+
+        bool drawSquare = false;
+        bool drawCircle = false;
+        bool drawRectangle = false;
+
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -29,17 +40,120 @@ namespace Forms_image
             //graphics.Dispose();
 
 
-                            // Õ¿ œ–Œ≈ “ œŒƒ “¿¡À»÷” ‘Œ“Œ√–¿‘»…
-                            //Rectangle rect = this.ClientRectangle;
-                            //Image im = new Bitmap("ÔˇÚ¸.jpg");
-                            //graphics.DrawImage(im, rect);
-                            //graphics.Dispose();
+            // Õ¿ œ–Œ≈ “ œŒƒ “¿¡À»÷” ‘Œ“Œ√–¿‘»…
+            //Rectangle rect = this.ClientRectangle;
+            //Image im = new Bitmap("ÔˇÚ¸.jpg");
+            //graphics.DrawImage(im, rect);
+            //graphics.Dispose();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            g.Clear(panel4.BackColor);
+            panel4.BackColor = Color.White;
+        }
+
+        private void exidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do u wanna exit?", "Exit", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void panel4_MouseDown(object sender, MouseEventArgs e)
+        {
+            startPaint = true;
+            if (drawSquare)
+            {
+                SolidBrush sb = new SolidBrush(button3.BackColor);
+                g.FillRectangle(sb, e.X, e.Y, int.Parse(textBox1.Text), int.Parse(textBox1.Text));
+                startPaint = false;
+                drawSquare = false;
+            }
+            if (drawRectangle)
+            {
+                SolidBrush sb = new SolidBrush(button3.BackColor);
+                g.FillRectangle(sb, e.X, e.Y, 2 * int.Parse(textBox1.Text), int.Parse(textBox1.Text));
+                startPaint = false;
+                drawRectangle = false;
+            }
+            if (drawSquare)
+            {
+                SolidBrush sb = new SolidBrush(button3.BackColor);
+                g.FillRectangle(sb, e.X, e.Y, int.Parse(textBox1.Text), int.Parse(textBox1.Text));
+                startPaint = false;
+                drawCircle = false;
+            }
+        }
+
+        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (startPaint)
+            {
+                Pen p = new Pen(button3.BackColor, float.Parse(comboBox3.Text));
+                g.DrawLine(p, new Point(initX ?? e.X, initY ?? e.Y), new Point(e.X, e.Y));
+                initX = e.X;
+                initY = e.Y;
+            }
+        }
+
+        private void panel4_MouseUp(object sender, MouseEventArgs e)
+        {
+            startPaint = false;
+            initX = null;
+            initY = null;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ColorDialog c = new ColorDialog();
+            if (c.ShowDialog() == DialogResult.OK)
+            {
+                button3.BackColor = c.Color;
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ColorDialog c = new ColorDialog();
+            if (c.ShowDialog() == DialogResult.OK)
+            {
+                panel4.BackColor = c.Color;
+                button1.BackColor = c.Color;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            drawSquare = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            drawCircle = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            drawRectangle = true;
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.ShowDialog();
+        }
     }
 }
